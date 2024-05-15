@@ -25,7 +25,10 @@ class Table():
         generatedWords.append(random.choice(list(self.table.keys()))) #randomly picked starting word
         for _ in range(moreWords):
             generatedWords.append(self.getNextWord(generatedWords[-1]))
-        return " ".join(generatedWords)
+        extraWords= " ".join(generatedWords)
+        #write to file
+        with open("output/generatedContinuation.txt", 'w') as output_file:
+            output_file.write(extraWords)
     
     def getNextWord(self, lastWord):
         #pick a random word from the words that follow 'lastWord'
