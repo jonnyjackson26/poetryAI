@@ -1,3 +1,4 @@
+import random
 class WordInfo():
     def __init__(self):
         self.followingWords={}
@@ -13,3 +14,9 @@ class WordInfo():
         for word in self.followingWords:
             s=s+word+" ("+str(self.followingWords[word])+"), "
         return s
+    
+    def getRandomWordThatCouldFollow(self):
+        options=[]
+        for i in range(len(list(self.followingWords.keys()))):
+            options.append(list(self.followingWords.keys())[i])
+        return random.choice(options)

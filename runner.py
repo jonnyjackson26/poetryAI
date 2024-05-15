@@ -1,4 +1,4 @@
-from WordInfo import WordInfo
+from Table import Table
 
 
 def main():
@@ -14,32 +14,15 @@ def main():
                 file_contents = file_contents.replace(char, '')
             file_contents = file_contents.replace(".", ' ')
 
-            table={}
-            words=file_contents.split(" ")
-            for i in range(len(words) - 1):
-                current_word = words[i]
-                next_word = words[i + 1]
-                
-                if current_word in table:
-                    table[current_word].addFollowingWord(next_word)
-                else:
-                    table[current_word] = WordInfo()
-                    table[current_word].addFollowingWord(next_word)
-
             
-            #write results to ouptut/output.txt
-            with open("output/output.txt", "w") as output_file:
-                for word in table:
-                    output_file.write(word + " " + table[word].toString() + "\n")
-
-
-
+            table=Table(file_contents.split(" "))
+            print(table.continueGenerating())
 
 
     except FileNotFoundError:
         print("File not found or path is incorrect.")
-    except Exception as e:
-        print("An error occurred:", e)
+    #except Exception as e:
+    #    print("An error occurred:", e)
 
 
 if __name__ == "__main__":
