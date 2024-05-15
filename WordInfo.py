@@ -16,7 +16,7 @@ class WordInfo():
         return s
     
     def getRandomWordThatCouldFollow(self):
-        options=[]
-        for i in range(len(list(self.followingWords.keys()))):
-            options.append(list(self.followingWords.keys())[i])
+        options = []
+        for word, count in self.followingWords.items():
+            options.extend([word] * count)
         return random.choice(options)

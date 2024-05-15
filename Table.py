@@ -19,7 +19,7 @@ class Table():
             for word in self.table:
                 output_file.write(word + " " + self.table[word].toString() + "\n")
 
-    def continueGenerating(self, moreWords=20):
+    def continueGenerating(self, moreWords=100):
         #make a list 
         generatedWords=[]
         generatedWords.append(random.choice(list(self.table.keys()))) #randomly picked starting word
@@ -30,4 +30,4 @@ class Table():
     def getNextWord(self, lastWord):
         #pick a random word from the words that follow 'lastWord'
         wordInfo=self.table[lastWord]
-        return wordInfo.getRandomWordThatCouldFollow() #i dont see why id have this logic here and also in WordInfo.py, choose one
+        return wordInfo.getRandomWordThatCouldFollow() 

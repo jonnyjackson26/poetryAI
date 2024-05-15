@@ -1,4 +1,5 @@
 from Table import Table
+import re
 
 
 def main():
@@ -12,7 +13,8 @@ def main():
             characters_to_remove = "()[],<>@#$%^&*-+=;\n"
             for char in characters_to_remove:
                 file_contents = file_contents.replace(char, '')
-            file_contents = file_contents.replace(".", ' ')
+            # Add a space before and after '.', '!', '?', making them words
+            file_contents = re.sub(r'(?<=[^.!?])([.!?])', r' \1 ', file_contents)
 
             
             table=Table(file_contents.split(" "))
